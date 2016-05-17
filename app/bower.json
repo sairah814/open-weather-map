@@ -1,0 +1,17 @@
+{
+  "name": "open-weather-map",
+  "homepage": "https://github.com/sairah814/fizzbuzz",
+  "authors": [
+    "sairah814 <sairah814@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
