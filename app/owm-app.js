@@ -26,13 +26,6 @@ angular.module('OWMApp', ['ngRoute'])
     .controller('HomeCtrl', ['$scope', function ($scope) {
         //empty for now
     }])
-    .controller('CityCtrl', function ($scope, $routeParams, owmCities) {
-        //$scope.city = $routeParams.city;
-        var city = $routeParams.city;
-        if (owmCities.indexOf(city) === -1) {
-            //city not found
-            return;
-        }
-
+    .controller('CityCtrl', function ($scope, city) {
         $scope.city = city;
     });
