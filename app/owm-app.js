@@ -1,4 +1,4 @@
-angular.module('OWMApp', ['ngRoute'])
+angular.module('OWMApp', ['ngRoute', 'ngAnimate'])
     .value('owmCities', ['New York', 'Dallas', 'Chicago'])
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/', {
@@ -23,9 +23,17 @@ angular.module('OWMApp', ['ngRoute'])
                 template: '<p>Error - Page Not Found</p>'
             });
     }])
-    .run(function ($rootScope, $location) { //allowing error redirection -fallback cases
+    .run(function ($rootScope, $location, $timeout) { //allowing error redirection -fallback cases
         $rootScope.$on('$routeChangeError', function () {
             $location.path('/error');
+        });
+        $rootScope.$on('$routeChangeStart', function () {
+            $rootScope.isLoading = true;
+        });
+        $rootScope.$on('$routeChangeSuccess', function () {
+            $timeout(function () { //using timeout function cause otherwise change would be instantaneous
+                $rootScope.isLoading = false;
+            }, 1000);
         });
     })
     .controller('HomeCtrl', ['$scope', function ($scope) {
