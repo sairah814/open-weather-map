@@ -23,6 +23,11 @@ angular.module('OWMApp', ['ngRoute'])
                 template: '<p>Error - Page Not Found</p>'
             });
     }])
+    .run(function ($rootScope, $location) { //allowing error redirection -fallback cases
+        $rootScope.$on('$routeChangeError', function () {
+            $location.path('/error');
+        });
+    })
     .controller('HomeCtrl', ['$scope', function ($scope) {
         //empty for now
     }])
